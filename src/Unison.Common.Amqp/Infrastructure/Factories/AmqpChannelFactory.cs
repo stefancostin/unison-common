@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Unison.Common.Amqp.Infrastructure.Models;
 using Unison.Common.Amqp.Interfaces;
-using Unison.Common.Amqp.Models;
 
 namespace Unison.Common.Amqp.Infrastructure.Factories
 {

@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Unison.Common.Amqp.Infrastructure.Client;
 using Unison.Common.Amqp.Interfaces;
-using Unison.Common.Amqp.Models;
 
 namespace Unison.Common.Amqp.Infrastructure.Factories
 {

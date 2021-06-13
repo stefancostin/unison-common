@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unison.Common.Amqp.Interfaces;
 
-namespace Unison.Common.Amqp.Models
+namespace Unison.Common.Amqp.Infrastructure.Models
 {
     public class AmqpManagedChannel : IAmqpManagedChannel
     {

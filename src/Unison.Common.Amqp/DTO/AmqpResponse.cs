@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unison.Common.Amqp.Models.DTO
+namespace Unison.Common.Amqp.DTO
 {
     public class AmqpResponse
     {

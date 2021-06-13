@@ -2,8 +2,8 @@
 using RabbitMQ.Client;
 using System;
 using System.Text;
+using Unison.Common.Amqp.DTO;
 using Unison.Common.Amqp.Interfaces;
-using Unison.Common.Amqp.Models.DTO;
 
 namespace Unison.Common.Amqp.Infrastructure.Client
 {

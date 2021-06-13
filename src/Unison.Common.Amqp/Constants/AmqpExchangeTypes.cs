@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unison.Common.Amqp.Models
+namespace Unison.Common.Amqp.Constants
 {
     public static class AmqpExchangeTypes
     {

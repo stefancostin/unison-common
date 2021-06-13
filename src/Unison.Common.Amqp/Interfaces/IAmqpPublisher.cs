@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Unison.Common.Amqp.Models.DTO;
+using Unison.Common.Amqp.DTO;
 
 namespace Unison.Common.Amqp.Interfaces
 {
