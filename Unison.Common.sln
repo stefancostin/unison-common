@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4DE7DD7C-6D27-46AE-BC15-988D4325BC00}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CD53AA39-1BAC-4239-81F1-C84DACFBE93D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unison.Common.Amqp", "src\Unison.Common.Amqp\Unison.Common.Amqp.csproj", "{7929198C-E13D-4005-B827-FD17E9866EE8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7929198C-E13D-4005-B827-FD17E9866EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7929198C-E13D-4005-B827-FD17E9866EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7929198C-E13D-4005-B827-FD17E9866EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7929198C-E13D-4005-B827-FD17E9866EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7929198C-E13D-4005-B827-FD17E9866EE8} = {4DE7DD7C-6D27-46AE-BC15-988D4325BC00}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44F4841E-C967-45AA-8369-C088B50E97F2}
+	EndGlobalSection
+EndGlobal
