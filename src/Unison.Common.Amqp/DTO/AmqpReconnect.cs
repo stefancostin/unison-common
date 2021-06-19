@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Unison.Common.Amqp.Interfaces
+namespace Unison.Common.Amqp.DTO
 {
-    public interface IAmqpSubscriptionWorker<T>
+    public class AmqpReconnect : AmqpMessage
     {
-        public void ProcessMessage(T message);
     }
 }

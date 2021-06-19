@@ -6,18 +6,20 @@ using System.Text;
 using System.Threading.Tasks;
 using Unison.Common.Amqp.Infrastructure.Client;
 using Unison.Common.Amqp.Infrastructure.Factories;
+using Unison.Common.Amqp.Infrastructure.Models;
 using Unison.Common.Amqp.Interfaces;
 
 namespace Unison.Common.Amqp
 {
     public static class StartupSetup
     {
-        public static void AddAmqpContext(this IServiceCollection services)
+        public static void AddAmqpInfrastructure(this IServiceCollection services)
         {
             services.AddSingleton<IAmqpChannelFactory, AmqpChannelFactory>();
 
             services.AddScoped<IAmqpSubscriberFactory, AmqpSubscriberFactory>();
-            services.AddScoped<IAmqpPublisher, AmqpPublisher>();
+
+            services.AddTransient<IAmqpPublisher, AmqpPublisher>();
         }
     }
 }

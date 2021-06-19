@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Authors>Stefan Costin</Authors>
     <Product>Unison</Product>
-    <Description>Provides a common AMQP client infrastructure for Unison servers</Description>
-    <Version>1.0.1</Version>
+    <Description>Provides a common AMQP client infrastructure (University Project).</Description>
+    <Version>1.0.30</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Unison.Common.Amqp.DTO
 {
-    public class AmqpResponse
+    public class AmqpAgent
     {
-        public IEnumerable<Dictionary<string, object>> QueryResult { get; set; }
+        public string AgentId { get; set; }
+        public string NodeId { get; set; }
     }
 }

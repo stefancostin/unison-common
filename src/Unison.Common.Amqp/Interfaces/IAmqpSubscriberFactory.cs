@@ -8,6 +8,6 @@ namespace Unison.Common.Amqp.Interfaces
 {
     public interface IAmqpSubscriberFactory
     {
-        IAmqpSubscriber CreateSubscriber(string queue, IAmqpSubscriptionWorker worker);
+        IAmqpSubscriber CreateSubscriber<T>(string queue, IAmqpSubscriptionWorker<T> worker);
     }
 }

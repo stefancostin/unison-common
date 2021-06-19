@@ -11,32 +11,19 @@ namespace Unison.Common.Amqp.Infrastructure.Client
     {
         private readonly IAmqpManagedChannel _channel;
 
-        private const string responseExchange = "unison.responses";
-
-        private const string exchange = "unison.commands";
-        private const string queue = "unison.commands.sync";
-
         public AmqpPublisher(IAmqpChannelFactory channelFactory)
         {
             _channel = channelFactory.CreateManagedChannel();
         }
 
-        public void PublishMessage(AmqpMessage message)
+        public void PublishMessage(AmqpMessage message, string exchange, string routingKey = null)
         {
+            routingKey = routingKey ?? exchange;
+
             var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
 
             _channel.GetChannel().BasicPublish(exchange: exchange,
-                                               routingKey: queue,
-                                               basicProperties: null,
-                                               body: body);
-        }
-
-        public void PublishResponse(AmqpResponse response)
-        {
-            var body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(response));
-
-            _channel.GetChannel().BasicPublish(exchange: responseExchange,
-                                               routingKey: responseExchange,
+                                               routingKey: routingKey,
                                                basicProperties: null,
                                                body: body);
         }

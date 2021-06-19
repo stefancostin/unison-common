@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Unison.Common.Amqp.Interfaces
 {
-    public interface IAmqpSubscriptionWorker<T>
+    public interface IAmqpSubscriberInitializer
     {
-        public void ProcessMessage(T message);
+        IEnumerable<IAmqpSubscriber> Initialize();
     }
 }

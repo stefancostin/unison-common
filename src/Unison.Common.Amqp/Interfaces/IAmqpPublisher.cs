@@ -9,8 +9,6 @@ namespace Unison.Common.Amqp.Interfaces
 {
     public interface IAmqpPublisher
     {
-        void PublishMessage(AmqpMessage message);
-
-        void PublishResponse(AmqpResponse response);
+        void PublishMessage(AmqpMessage message, string exchange, string routingKey = null);
     }
 }

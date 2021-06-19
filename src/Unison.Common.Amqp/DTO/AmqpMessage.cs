@@ -6,8 +6,5 @@ using System.Threading.Tasks;
 
 namespace Unison.Common.Amqp.DTO
 {
-    public class AmqpMessage
-    {
-        public string Query { get; set; }
-    }
+    public class AmqpMessage { }
 }

@@ -8,6 +8,6 @@ namespace Unison.Common.Amqp.Interfaces
 {
     public interface IAmqpInfrastructureInitializer
     {
-        Dictionary<string, string> Initialize();
+        void Initialize();
     }
 }
