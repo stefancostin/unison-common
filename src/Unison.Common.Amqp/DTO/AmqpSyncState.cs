@@ -8,9 +8,8 @@ namespace Unison.Common.Amqp.DTO
 {
     public class AmqpSyncState
     {
-        public IEnumerable<Dictionary<string, object>> Added { get; set; }
-        public IEnumerable<Dictionary<string, object>> Updated { get; set; }
-        public IEnumerable<Dictionary<string, object>> Deleted { get; set; }
-
+        public AmqpDataSet Added { get; set; }
+        public AmqpDataSet Updated { get; set; }
+        public AmqpDataSet Deleted { get; set; }
     }
 }
