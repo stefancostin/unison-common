@@ -8,12 +8,22 @@ namespace Unison.Common.Amqp.DTO
 {
     public class AmqpDataSet
     {
+        public AmqpDataSet()
+        {
+            Records = new List<AmqpRecord>();
+        }
+
         public string Entity { get; set; }
         public IEnumerable<AmqpRecord> Records { get; set; }
     }
 
     public class AmqpRecord
     {
+        public AmqpRecord()
+        {
+            Fields = new List<AmqpField>();
+        }
+
         public string PrimaryKey { get; set; }
         public IEnumerable<AmqpField> Fields { get; set; }
     }
