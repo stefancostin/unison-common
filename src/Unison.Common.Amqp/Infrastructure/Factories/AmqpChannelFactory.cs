@@ -11,15 +11,10 @@ namespace Unison.Common.Amqp.Infrastructure.Factories
 {
     public class AmqpChannelFactory : IAmqpChannelFactory
     {
-        private const string _connectionString = "amqp://guest:guest@localhost:5672";
         private readonly IConnection _connection;
 
-        public AmqpChannelFactory()
+        public AmqpChannelFactory(IAmqpConnectionFactory connectionFactory)
         {
-            var connectionFactory = new ConnectionFactory
-            {
-                Uri = new Uri(_connectionString)
-            };
             _connection = connectionFactory.CreateConnection();
         }
 
@@ -35,6 +30,7 @@ namespace Unison.Common.Amqp.Infrastructure.Factories
 
         ~AmqpChannelFactory()
         {
+            _connection?.Close();
             _connection?.Dispose();
         }
     }

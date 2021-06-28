@@ -42,12 +42,13 @@ namespace Unison.Common.Amqp.Infrastructure.Models
 
         public void Dispose()
         {
+            _channel?.Close();
             _channel?.Dispose();
         }
 
         ~AmqpManagedChannel()
         {
-            _channel?.Dispose();
+            Dispose();
         }
     }
 }

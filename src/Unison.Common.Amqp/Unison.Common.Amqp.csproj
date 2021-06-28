@@ -5,7 +5,7 @@
     <Authors>Stefan Costin</Authors>
     <Product>Unison</Product>
     <Description>Provides a common AMQP client infrastructure (University Project).</Description>
-    <Version>1.0.33</Version>
+    <Version>1.0.44</Version>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Unison.Common.Amqp.Infrastructure.Client;
 using Unison.Common.Amqp.Infrastructure.Factories;
-using Unison.Common.Amqp.Infrastructure.Models;
 using Unison.Common.Amqp.Interfaces;
 
 namespace Unison.Common.Amqp
@@ -15,10 +14,9 @@ namespace Unison.Common.Amqp
     {
         public static void AddAmqpInfrastructure(this IServiceCollection services)
         {
+            services.AddSingleton<IAmqpConnectionFactory, AmqpConnectionFactory>();
             services.AddSingleton<IAmqpChannelFactory, AmqpChannelFactory>();
-
             services.AddScoped<IAmqpSubscriberFactory, AmqpSubscriberFactory>();
-
             services.AddTransient<IAmqpPublisher, AmqpPublisher>();
         }
     }

@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Unison.Common.Amqp.DTO
 {
-    public class AmqpSyncState
+    public class AmqpApplyVersion : AmqpMessage
     {
         public string Entity { get; set; }
         public long Version { get; set; }
-        public AmqpDataSet Added { get; set; }
-        public AmqpDataSet Updated { get; set; }
-        public AmqpDataSet Deleted { get; set; }
     }
 }

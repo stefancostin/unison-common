@@ -10,26 +10,41 @@ namespace Unison.Common.Amqp.DTO
     {
         public AmqpDataSet()
         {
-            Records = new List<AmqpRecord>();
+            Records = new Dictionary<string, AmqpRecord>();
+        }
+
+        public AmqpDataSet(string entity, string primaryKey) : this()
+        {
+            Entity = entity;
+            PrimaryKey = primaryKey;
         }
 
         public string Entity { get; set; }
-        public IEnumerable<AmqpRecord> Records { get; set; }
+        public string PrimaryKey { get; set; }
+        public IDictionary<string, AmqpRecord> Records { get; set; }
     }
 
     public class AmqpRecord
     {
         public AmqpRecord()
         {
-            Fields = new List<AmqpField>();
+            Fields = new Dictionary<string, AmqpField>();
         }
 
-        public string PrimaryKey { get; set; }
-        public IEnumerable<AmqpField> Fields { get; set; }
+        public IDictionary<string, AmqpField> Fields { get; set; }
     }
 
     public class AmqpField
     {
+        public AmqpField() { }
+
+        public AmqpField(string name, Type type, object value)
+        {
+            Name = name;
+            Type = type;
+            Value = value;
+        }
+
         public string Name { get; set; }
         public Type Type { get; set; }
         public object Value { get; set; }
