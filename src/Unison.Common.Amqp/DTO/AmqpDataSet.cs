@@ -22,6 +22,14 @@ namespace Unison.Common.Amqp.DTO
         public string Entity { get; set; }
         public string PrimaryKey { get; set; }
         public IDictionary<string, AmqpRecord> Records { get; set; }
+
+        public bool IsEmpty()
+        {
+            if (Records == null)
+                return true;
+
+            return !Records.Any((KeyValuePair<string, AmqpRecord> record) => record.Value != null && !record.Value.IsEmpty());
+        }
     }
 
     public class AmqpRecord
@@ -32,6 +40,14 @@ namespace Unison.Common.Amqp.DTO
         }
 
         public IDictionary<string, AmqpField> Fields { get; set; }
+
+        public bool IsEmpty()
+        {
+            if (Fields == null)
+                return true;
+
+            return !Fields.Any();
+        }
     }
 
     public class AmqpField

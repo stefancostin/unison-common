@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -16,15 +17,17 @@ namespace Unison.Common.Amqp.Infrastructure.Client
     public class AmqpSubscriber<T> : IAmqpSubscriber
     {
         private readonly string _queue;
-        private readonly IAmqpSubscriptionWorker<T> _worker;
         private readonly IAmqpManagedChannel _channel;
+        private readonly IAmqpSubscriptionWorker<T> _worker;
+        private readonly IServiceProvider _services;
         private readonly ILogger _logger;
 
-        public AmqpSubscriber(string queue, IAmqpSubscriptionWorker<T> worker, IAmqpManagedChannel channel, ILogger logger)
+        public AmqpSubscriber(string queue, IAmqpSubscriptionWorker<T> worker, IServiceProvider services, IAmqpManagedChannel channel, ILogger logger)
         {
+            _channel = channel;
             _queue = queue;
             _worker = worker;
-            _channel = channel;
+            _services = services;
             _logger = logger;
         }
 
@@ -34,9 +37,13 @@ namespace Unison.Common.Amqp.Infrastructure.Client
 
             consumer.Received += (sender, e) =>
             {
-                var body = e.Body.ToArray();
-                var message = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(body));
-                _worker.ProcessMessage(message);
+                using (var serviceScope = _services.CreateScope())
+                {
+                    var body = e.Body.ToArray();
+                    var message = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(body));
+                    _worker.ServiceScope = serviceScope;
+                    _worker.ProcessMessage(message);
+                }
             };
 
             _channel.GetChannel().BasicConsume(queue: _queue, autoAck: true, consumer: consumer);

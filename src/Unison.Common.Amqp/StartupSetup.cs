@@ -16,7 +16,7 @@ namespace Unison.Common.Amqp
         {
             services.AddSingleton<IAmqpConnectionFactory, AmqpConnectionFactory>();
             services.AddSingleton<IAmqpChannelFactory, AmqpChannelFactory>();
-            services.AddScoped<IAmqpSubscriberFactory, AmqpSubscriberFactory>();
+            services.AddSingleton<IAmqpSubscriberFactory, AmqpSubscriberFactory>();
             services.AddTransient<IAmqpPublisher, AmqpPublisher>();
         }
     }

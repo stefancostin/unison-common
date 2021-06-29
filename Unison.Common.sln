@@ -7,7 +7,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4DE7DD7C-6D2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{CD53AA39-1BAC-4239-81F1-C84DACFBE93D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unison.Common.Amqp", "src\Unison.Common.Amqp\Unison.Common.Amqp.csproj", "{7929198C-E13D-4005-B827-FD17E9866EE8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Unison.Common.Amqp", "src\Unison.Common.Amqp\Unison.Common.Amqp.csproj", "{7929198C-E13D-4005-B827-FD17E9866EE8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

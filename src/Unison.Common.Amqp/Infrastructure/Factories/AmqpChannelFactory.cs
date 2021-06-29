@@ -1,4 +1,5 @@
 ﻿using RabbitMQ.Client;
+using RabbitMQ.Client.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,12 @@ namespace Unison.Common.Amqp.Infrastructure.Factories
 {
     public class AmqpChannelFactory : IAmqpChannelFactory
     {
-        private readonly IConnection _connection;
+        private readonly IAmqpConnectionFactory _connectionFactory;
+        private IConnection _connection;
 
         public AmqpChannelFactory(IAmqpConnectionFactory connectionFactory)
         {
+            _connectionFactory = connectionFactory;
             _connection = connectionFactory.CreateConnection();
         }
 
@@ -25,7 +28,15 @@ namespace Unison.Common.Amqp.Infrastructure.Factories
 
         public IModel CreateUnmanagedChannel()
         {
-            return _connection.CreateModel();
+            try
+            {
+                return _connection.CreateModel();
+            }
+            catch (AlreadyClosedException ex)
+            {
+                _connection = _connectionFactory.CreateConnection();
+                return _connection.CreateModel();
+            }
         }
 
         ~AmqpChannelFactory()

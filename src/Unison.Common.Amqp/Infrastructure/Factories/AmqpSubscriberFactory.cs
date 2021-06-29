@@ -12,17 +12,19 @@ namespace Unison.Common.Amqp.Infrastructure.Factories
     public class AmqpSubscriberFactory : IAmqpSubscriberFactory
     {
         private readonly IAmqpChannelFactory _channelFactory;
+        private readonly IServiceProvider _services;
         private readonly ILoggerFactory _loggerFactory;
 
-        public AmqpSubscriberFactory(IAmqpChannelFactory channelFactory, ILoggerFactory loggerFactory)
+        public AmqpSubscriberFactory(IAmqpChannelFactory channelFactory, IServiceProvider services, ILoggerFactory loggerFactory)
         {
             _channelFactory = channelFactory;
+            _services = services;
             _loggerFactory = loggerFactory;
         }
 
         public IAmqpSubscriber CreateSubscriber<T>(string queue, IAmqpSubscriptionWorker<T> worker)
         {
-            return new AmqpSubscriber<T>(queue, worker, _channelFactory.CreateManagedChannel(), _loggerFactory.CreateLogger(CreateLoggerName(queue)));
+            return new AmqpSubscriber<T>(queue, worker, _services, _channelFactory.CreateManagedChannel(), _loggerFactory.CreateLogger(CreateLoggerName(queue)));
         }
 
         private string CreateLoggerName(string queue)
