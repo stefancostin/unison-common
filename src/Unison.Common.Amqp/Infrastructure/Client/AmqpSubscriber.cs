@@ -19,15 +19,13 @@ namespace Unison.Common.Amqp.Infrastructure.Client
         private readonly string _queue;
         private readonly IAmqpManagedChannel _channel;
         private readonly IAmqpSubscriptionWorker<T> _worker;
-        private readonly IServiceProvider _services;
         private readonly ILogger _logger;
 
-        public AmqpSubscriber(string queue, IAmqpSubscriptionWorker<T> worker, IServiceProvider services, IAmqpManagedChannel channel, ILogger logger)
+        public AmqpSubscriber(string queue, IAmqpSubscriptionWorker<T> worker, IAmqpManagedChannel channel, ILogger logger)
         {
             _channel = channel;
             _queue = queue;
             _worker = worker;
-            _services = services;
             _logger = logger;
         }
 
@@ -37,13 +35,9 @@ namespace Unison.Common.Amqp.Infrastructure.Client
 
             consumer.Received += (sender, e) =>
             {
-                using (var serviceScope = _services.CreateScope())
-                {
-                    var body = e.Body.ToArray();
-                    var message = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(body));
-                    _worker.ServiceScope = serviceScope;
-                    _worker.ProcessMessage(message);
-                }
+                var body = e.Body.ToArray();
+                var message = JsonConvert.DeserializeObject<T>(Encoding.UTF8.GetString(body));
+                _worker.ProcessMessage(message);
             };
 
             _channel.GetChannel().BasicConsume(queue: _queue, autoAck: true, consumer: consumer);

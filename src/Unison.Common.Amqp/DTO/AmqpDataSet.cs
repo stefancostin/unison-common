@@ -19,8 +19,14 @@ namespace Unison.Common.Amqp.DTO
             PrimaryKey = primaryKey;
         }
 
+        public AmqpDataSet(string entity, string primaryKey, long version) : this(entity, primaryKey)
+        {
+            Version = version;
+        }
+
         public string Entity { get; set; }
         public string PrimaryKey { get; set; }
+        public long Version { get; set; }
         public IDictionary<string, AmqpRecord> Records { get; set; }
 
         public bool IsEmpty()

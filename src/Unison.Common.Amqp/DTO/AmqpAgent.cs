@@ -8,7 +8,7 @@ namespace Unison.Common.Amqp.DTO
 {
     public class AmqpAgent
     {
-        public string AgentId { get; set; }
+        public string InstanceId { get; set; }
         public string NodeId { get; set; }
     }
 }
