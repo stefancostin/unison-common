@@ -1,11 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Unison.Common.Amqp.DTO
 {
+    [Serializable]
     public class AmqpDataSet
     {
         public AmqpDataSet()
@@ -38,6 +37,7 @@ namespace Unison.Common.Amqp.DTO
         }
     }
 
+    [Serializable]
     public class AmqpRecord
     {
         public AmqpRecord()
@@ -56,6 +56,7 @@ namespace Unison.Common.Amqp.DTO
         }
     }
 
+    [Serializable]
     public class AmqpField
     {
         public AmqpField() { }

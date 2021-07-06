@@ -27,10 +27,5 @@ namespace Unison.Common.Amqp.Infrastructure.Client
                                                basicProperties: null,
                                                body: body);
         }
-
-        // I can have another method for TaskParallel operations that each create a channel
-        // Basically, this meants having a method be used for parallel that begins with:
-        //   using var channel = _channelFactory.CreateChannel();
-
     }
 }
